@@ -70,4 +70,20 @@ public class MemoRepository {
         String sql = "DELETE FROM memo WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
+
+    public Memo findById(Long id) {
+        // DB 조회
+        String sql = "SELECT * FROM memo WHERE id = ?";
+
+        return jdbcTemplate.query(sql, resultSet -> {
+            if(resultSet.next()) {
+                Memo memo = new Memo();
+                memo.setUsername(resultSet.getString("username"));
+                memo.setContents(resultSet.getString("contents"));
+                return memo;
+            } else {
+                return null;
+            }
+        }, id);
+    }
 }

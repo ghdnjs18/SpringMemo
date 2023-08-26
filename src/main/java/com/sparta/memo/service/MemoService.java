@@ -4,11 +4,22 @@ import com.sparta.memo.dto.MemoRequestDto;
 import com.sparta.memo.dto.MemoResponseDto;
 import com.sparta.memo.entity.Memo;
 import com.sparta.memo.repository.MemoRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service // Service Type의 bean 객체로 지정
+//@Component // bean 객체로 지정 - IoC 컨테이너에서 자동으로 서버 구동시 bean으로 등록해줌
 public class MemoService {
     private final MemoRepository memoRepository;
+
+    // 직접적으로 IoC컨테이너에 접촉해 bean가져오기
+//    public MemoService(ApplicationContext context) {
+//        // 1. 'Bean' 이름으로 가져오기
+//        MemoRepository memoRepository = (MemoRepository) context.getBean("memoRepository");
+//        // 2. 'Bean' 클래스 형식으로 가져오기
+//        emoRepository memoRepository = context.getBean(MemoRepository.class)
+//        this.memoRepository = memoRepository;
+//    }
 
     public MemoService(MemoRepository memoRepository) {
         this.memoRepository = memoRepository;

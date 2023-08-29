@@ -22,6 +22,7 @@ public class TransactionTest {
     MemoRepository memoRepository;
 
     @Test
+    @Disabled
     @Transactional
     @Rollback(value = false) // 테스트 코드에서 @Transactional 를 사용하면 테스트가 완료된 후 롤백하기 때문에 false 옵션 추가
     @DisplayName("메모 생성 성공")

@@ -19,6 +19,9 @@ public class Memo extends Timestamped{
     private String username;
     @Column(name = "contents", nullable = false, length = 500)
     private String contents;
+    @Column(name = "title", nullable = false)
+    private String title;
+
 
     public Memo(MemoRequestDto requestDto) {
         this.username = requestDto.getUsername();

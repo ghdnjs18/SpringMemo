@@ -1,7 +1,9 @@
 package com.sparta.memo.controller;
 
+import com.sparta.memo.dto.LoginRequestDto;
 import com.sparta.memo.dto.SignupRequestDto;
 import com.sparta.memo.service.UserService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -31,5 +33,16 @@ public class UserController {
         userService.signup(requestDto);
 
         return "redirect:/api/user/login-page";
+    }
+
+    @PostMapping("/user/login")
+    public String login(LoginRequestDto requestDto, HttpServletResponse res) {
+        try {
+            userService.login(requestDto, res);
+        } catch (Exception e) {
+            return "redirect:/api/user/login-page?error";
+        }
+
+        return "redirect:/api/memo";
     }
 }

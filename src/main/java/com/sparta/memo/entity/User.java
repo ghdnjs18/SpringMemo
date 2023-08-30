@@ -24,8 +24,6 @@ public class User {
 //    @Pattern(regexp = "[a-zA-Z0-9]{8,15}", message = "비밀번호 형식을 확인하세요.")
     private String password;
 
-
-
     public User(String username, String password) {
         this.username = username;
         this.password = password;

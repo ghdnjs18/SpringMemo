@@ -33,9 +33,7 @@ public class MemoService {
         memoRepository.save(memo);
 
         // Entity -> ResponseDto
-        MemoResponseDto memoResponseDto = new MemoResponseDto(memo);
-
-        return memoResponseDto;
+        return new MemoResponseDto(memo);
     }
 
     public List<MemoResponseDto> getMemos() {

@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    <script src="/js/basic.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Memo Service</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -227,7 +231,7 @@
             for (let i = 0; i < length; i++) {
                 let number = Math.random() * charactersLength;
                 let index = Math.floor(number);
-                result += characters.charAt(memo);
+                result += characters.charAt(index);
             }
             return result;
         }
@@ -318,7 +322,7 @@
                 return;
             }
             // 3. genRandomName 함수를 통해 익명의 username을 만듭니다.
-            let username = genRandomName(10);
+            let username = $(`#username`).text().trim();
 
             // 4. 전달할 data JSON으로 만듭니다.
             let data = {'username': username, 'contents': contents};
@@ -386,6 +390,14 @@
 
 </div>
 <div class="wrap">
+    <div id="login-true">
+        <div id="header-title-login-user">
+            <span id="username" th:text="${username}"></span> 님
+        </div>
+        <a id="login-text" href="javascript:logout()">
+            로그아웃
+        </a>
+    </div>
     <div class="header">
         <h2>Memo</h2>
         <p>
